@@ -160,6 +160,40 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean camposVazios() {
+        try {
+            if (jtNome.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo nome não pode ser vazio");
+                return true;
+            } else if (jtCpf.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo cpf não pode ser vazio");
+                return true;
+            } else if (jtRG.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo rg não pode ser vazio");
+                return true;
+            } else if (jtEndereco.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo endereço não pode ser vazio");
+                return true;
+            } else if (jtTelefone.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo telefone não pode ser vazio");
+                return true;
+            } else if (jtEmail1.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo e-mail não pode ser vazio");
+                return true;
+            } else if (jtDataNasc.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo data de nascimento não pode ser vazio");
+                return true;
+            } else if (jcConvenio.getSelectedItem().equals("-Selecione-")) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um convenio");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("erro" + e.getMessage());
+            return true;
+        }
+    }
     private void cadastrar() {
 
         try {
@@ -260,7 +294,7 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
     }
 
     private void jbCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (camposVazios() != false) {
+        if (camposVazios() == false) {
             cadastrar();
         }
     }
@@ -287,39 +321,4 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtRG;
     private javax.swing.JTextField jtTelefone;
     // End of variables declaration//GEN-END:variables
-
-    public boolean camposVazios() {
-        try {
-            if (jtNome.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo nome não pode ser vazio");
-                return true;
-            } else if (jtCpf.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo cpf não pode ser vazio");
-                return true;
-            } else if (jtRG.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo rg não pode ser vazio");
-                return true;
-            } else if (jtEndereco.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo endereço não pode ser vazio");
-                return true;
-            } else if (jtTelefone.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo telefone não pode ser vazio");
-                return true;
-            } else if (jtEmail1.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo e-mail não pode ser vazio");
-                return true;
-            } else if (jtDataNasc.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "campo data de nascimento não pode ser vazio");
-                return true;
-            } else if (jcConvenio.getSelectedItem().equals("-Selecione-")) {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um convenio");
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            System.out.println("erro" + e.getMessage());
-            return true;
-        }
-    }
 }
