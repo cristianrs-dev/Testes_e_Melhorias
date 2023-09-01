@@ -1,4 +1,3 @@
-
 package visao;
 
 import dao.ConvenioDAO;
@@ -162,6 +161,7 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrar() {
+
         try {
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -196,7 +196,7 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
                         "Selecione um produto");
             } // fecha else
 
-           // Criando objeto PacienteDAO para cadastrar o paciente no banco de dados
+            // Criando objeto PacienteDAO para cadastrar o paciente no banco de dados
             PacienteDAO pacDAO = new PacienteDAO();
             pacDAO.cadastrarPaciente(pac);
 
@@ -213,11 +213,17 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
     //apaga valores dos campos
     private void limpar() {
         jtNome.setText("");
-        jtEndereco.setText("");
         jtCpf.setText("");
+        jtRG.setText("");
+        jtEndereco.setText("");
+        jtTelefone.setText("");
+        jtEmail1.setText("");
+        jtDataNasc.setText("");
+        String selection="-Selecione-";
+        jcConvenio.setSelectedItem(selection);
+        
     }// fecha método
 
-    
     // metodo para preencher o combo box com os produtos cadastrados no banco de dados
     private void preencherCombo() {
         try {
@@ -254,8 +260,9 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
     }
 
     private void jbCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {
-        cadastrar();
-        limpar();
+        if (camposVazios() != false) {
+            cadastrar();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -280,4 +287,39 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtRG;
     private javax.swing.JTextField jtTelefone;
     // End of variables declaration//GEN-END:variables
+
+    public boolean camposVazios() {
+        try {
+            if (jtNome.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo nome não pode ser vazio");
+                return true;
+            } else if (jtCpf.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo cpf não pode ser vazio");
+                return true;
+            } else if (jtRG.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo rg não pode ser vazio");
+                return true;
+            } else if (jtEndereco.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo endereço não pode ser vazio");
+                return true;
+            } else if (jtTelefone.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo telefone não pode ser vazio");
+                return true;
+            } else if (jtEmail1.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo e-mail não pode ser vazio");
+                return true;
+            } else if (jtDataNasc.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "campo data de nascimento não pode ser vazio");
+                return true;
+            } else if (jcConvenio.getSelectedItem().equals("-Selecione-")) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um convenio");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("erro" + e.getMessage());
+            return true;
+        }
+    }
 }
