@@ -2,6 +2,7 @@ package visao;
 
 import dao.ConvenioDAO;
 import dao.PacienteDAO;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -194,19 +195,20 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
             return true;
         }
     }
+
     private void cadastrar() {
 
         try {
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+            String telefone=jtTelefone.getText();
             Paciente pac = new Paciente();
 
             // Atribuindo valores aos atributos do Paciente com base nos campos preenchidos pelo usuário na tela
             pac.setNome(jtNome.getText());
             pac.setEndereco(jtEndereco.getText());
             pac.setDataNascimento(sdf.parse(jtDataNasc.getText()));
-            pac.setTelefone(jtTelefone.getText());
+            pac.setTelefone(telefone);
             pac.setCpf(jtCpf.getText());
             pac.setRg(jtRG.getText());
 
@@ -253,9 +255,9 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
         jtTelefone.setText("");
         jtEmail1.setText("");
         jtDataNasc.setText("");
-        String selection="-Selecione-";
+        String selection = "-Selecione-";
         jcConvenio.setSelectedItem(selection);
-        
+
     }// fecha método
 
     // metodo para preencher o combo box com os produtos cadastrados no banco de dados
