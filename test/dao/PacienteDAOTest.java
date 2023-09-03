@@ -70,6 +70,15 @@ public class PacienteDAOTest {
         pacienteDAO.cadastrarPaciente(pac);
        // fail("The test case is a prototype.");
     }
+    
+    @Test
+    public void testBuscaPacientePeloCpf(){
+        String cpf = 
+        
+   
+    
+    
+    }
 
    
     
