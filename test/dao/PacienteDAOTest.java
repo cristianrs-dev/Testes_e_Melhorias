@@ -17,6 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -68,13 +69,16 @@ public class PacienteDAOTest {
         
          pac.setConvenio(1);
         pacienteDAO.cadastrarPaciente(pac);
-       // fail("The test case is a prototype.");
+      // fail("The test case is a prototype.");
     }
     
-    @Test
-    public void testBuscaPacientePeloCpf(){
-        String cpf = 
-        
+    //@Test
+    @Ignore
+    public void testBuscaPacientePeloCpf() throws Exception{
+        String cpf="123.456";
+        String query = "where CPF like'%" + cpf + "%'";
+        PacienteDAO dao = new PacienteDAO();
+        ArrayList<Paciente> listaPacientes = dao.buscarPacienteFiltro(query);
    
     
     
